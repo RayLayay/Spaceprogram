@@ -1,0 +1,734 @@
+# l1 = []
+# n = int(input(''))
+# def suiji(n):
+#     i = 1
+#     while i <= n:
+#         a = random.randint(1,1001)
+#         l1.append(a)
+#         i +=1
+#     return l1
+# suiji(n)
+# s1 = set()
+# for i in l1:
+#     s1.add(i)
+# l2 = []
+# for i in s1:
+#     l2.append(int(i))
+# for i in range(0,len(l2)):
+#     for k in range(0,i):
+#         if l2[i] < l2[k]:
+#             l2[i],l2[k] = l2[k],l2[i]
+# for i in l2:
+#     print(i)
+
+
+
+# b = ""
+# n = 10
+# while n:
+#     a = input('')
+#     if len(a) <= 8:
+#         b += a + '0'*(8-len(a)) + "/n"
+#     elif len(a) == 8:
+#         b += a + "/n"
+#     else:
+#         beishu = len(a)//8
+#         yushu = len(a)%8
+#         for i in range(0,beishu+1):
+#             if 8*(i+1) < len(a):
+#                 b += a[8*i:8*(i+1)] + "/n"
+#             else:
+#                 b += a[8*i:len(a)] + '0'*(8-yushu) + "/n"
+
+#     n -=1
+
+# print(b)
+
+
+# b = ""
+# n = 2
+# while n:
+#     a = input("")
+#     if len(a) > 100:
+#         print("请输入字符小于100")
+#         continue
+#     else:
+#         if len(a) < 8:
+#             b += a+(8-len(a))*'0'+"\n"
+#         elif len(a) == 8:
+#             b += a+"\n"
+#         else:
+#             for i in range(len(a)//8):
+#                 b += a[8*i:8*(i+1)]+"\n"
+#             if len(a)%8 != 0:
+#                 yu = a[8*(len(a)//8):]
+#                 b += yu+(8-len(yu))*'0'+"\n"
+#         n -= 1
+# print(b)
+
+
+
+# a = float(input(''))
+# b = a - int(a)
+# if b >= 0.5:
+#     print(int(a)+1)
+# else:
+#     print(int(a))
+
+# n = int(input())
+# i = 2
+# while n != 1:
+#     while n%i == 0:
+#         print(i,end=' ')
+#         n = n/i
+#     i +=1
+
+
+
+# while True:
+#     try:
+#         n = int(input())
+#         set1 = set({})
+#         for i in range(n):
+#             set1.add(int(input()))
+
+#         nums = list(set1)
+#         nums.sort()
+#         for i in nums:
+#             print(i)
+#     except:
+#         break
+
+
+
+# n = int(input())
+# a = 0
+# if n-(n//10)*10 == 0:
+#     print('不合要求，重新输入：')
+#     n = int(input())
+# else:
+#     s0 = str(n)
+#     s1 = list(s0)
+#     s2 = []
+#     for i in s1[::-1]:
+#         if not i in s2:
+#             s2.append(i)
+#     for k in s2:
+#         a += int(k)*10**(len(s2)-s2.index(k)-1)
+# print(a)
+
+
+# st1 = input('')
+# l = []
+# for i in st1[::1]:
+#     if not i in l:
+#         l.append(i)
+# print(len(l))
+
+
+# n = int(input())
+# s1 = str(n)
+# s2 = ''
+# for i in s1[::-1]:
+#     print(i,end='')
+
+
+# s1 = input().lower()
+# s1 = str(s1)
+# for i in s1[::-1]:
+#     print(i,end='')
+
+
+# s1 = input().split(' ')
+# for i in s1[::-1]:
+#     print(i,end = ' ')
+
+
+# while True:
+#     try:
+#         num=int(input())
+#         stack=[]
+#         for i in range(num):
+#             stack.append(input())
+#         print("\n".join(sorted(stack)))
+#     except:
+#         break
+
+
+# n = int(input())
+# n = bin(n)
+# print(n.count('1'))
+
+
+# n, m = map(int,input().split())
+# primary, annex = {}, {}
+# for i in range(1,m+1):
+#     x, y, z = map(int, input().split())
+#     if z==0:#主件
+#         primary[i] = [x, y]
+#     else:#附件
+#         if z in annex:#第二个附件
+#             annex[z].append([x, y])
+#         else:#第一个附件
+#             annex[z] = [[x,y]]
+# m = len(primary)#主件个数转化为物品个数
+# dp = [[0]*(n+1) for _ in range(m+1)]
+# w, v= [[]], [[]]
+# for key in primary:
+#     w_temp, v_temp = [], []
+#     w_temp.append(primary[key][0])#1、主件
+#     v_temp.append(primary[key][0]*primary[key][1])
+#     if key in annex:#存在主件
+#         w_temp.append(w_temp[0]+annex[key][0][0])#2、主件+附件1
+#         v_temp.append(v_temp[0]+annex[key][0][0]*annex[key][0][1])
+#         if len(annex[key])>1:#存在两主件
+#             w_temp.append(w_temp[0]+annex[key][1][0])#3、主件+附件2
+#             v_temp.append(v_temp[0]+annex[key][1][0]*annex[key][1][1])
+#             w_temp.append(w_temp[0]+annex[key][0][0]+annex[key][1][0])#3、主件+附件1+附件2
+#             v_temp.append(v_temp[0]+annex[key][0][0]*annex[key][0][1]+annex[key][1][0]*annex[key][1][1])
+#     w.append(w_temp)
+#     v.append(v_temp)
+# for i in range(1,m+1):
+#     for j in range(10,n+1,10):#物品的价格是10的整数倍
+#         max_i = dp[i-1][j]
+#         for k in range(len(w[i])):
+#             if j-w[i][k]>=0:
+#                 max_i = max(max_i, dp[i-1][j-w[i][k]]+v[i][k])
+#         dp[i][j] = max_i
+# print(dp[m][n])
+
+
+# str1 = input().split(';')
+# s0 = [0,0]
+# for items in str1:
+#     if items[1:].isdigit():
+#         if items[0] == 'A':
+#             s0 = [s0[0]-int(items[1:]),s0[1]]
+#         elif items[0] == 'W':
+#             s0 = [s0[0],s0[1]+int(items[1:])]
+#         elif items[0] == 'S':
+#             s0 = [s0[0],s0[1]-int(items[1:])]
+#         elif items[0] == 'D':
+#             s0 = [s0[0]+int(items[1:]),s0[1]]
+#         else:
+#             s0 = s0
+#     else:
+#         continue
+# print(str(s0[0]) + ',' + str(s0[1]))
+
+
+# l = []
+# ll = []
+# while 1:
+#     try:
+#         s = input().split('\\')[-1]
+#         data = s.split(' ')[0][-16:] + ' ' + s.split(' ')[1]
+#         if data not in l:
+#             l.append(data)
+#             ll.append(1)
+#         else:
+#             ll[l.index(data)] += 1
+#     except:
+#         break
+
+# for i in range(len(l[-8:])):
+#     print(l[-8:][i], ll[-8:][i])
+
+# def check(s):
+#     if len(s) <= 8:
+#         return 0
+#     a, b, c, d = 0, 0, 0, 0
+#     for item in s:
+#         if ord('a') <= ord(item) <= ord('z'):
+#             a = 1
+#         elif ord('A') <= ord(item) <= ord('Z'):
+#             b = 1
+#         elif ord('0') <= ord(item) <= ord('9'):
+#             c = 1
+#         else:
+#             d = 1
+#     if a + b + c + d < 3:
+#         return 0
+#     for i in range(len(s)-3):
+#         if len(s.split(s[i:i+3])) >= 3:
+#             return 0
+#     return 1
+
+# while 1:
+#     try:
+#         print('OK' if check(input()) else 'NG')
+#     except:
+#         break
+
+
+# ls = []
+# def check(stri):
+#     for i in stri[:]:
+#         if i.isupper():
+#             ls.append(chr(ord(i.lower()) + 1))
+#         elif i.islower():
+#             if i == 'a' or i == 'b' or i == 'c':
+#                 ls.append(2)
+#             elif i == 'd' or i == 'e' or i =='f':
+#                 ls.append(3)
+#             elif i == 'g' or i == 'h' or i == 'i':
+#                 ls.append(4)
+#             elif i == 'j' or i == 'k' or i == 'l':
+#                 ls.append(5)
+#             elif i == 'm' or i == 'n' or i == 'o':
+#                 ls.append(6)
+#             elif i == 'p' or i == 'q' or i == 'r' or i == 's':
+#                 ls.append(7)
+#             elif i == 't' or i == 'u' or i == 'v':
+#                 ls.append(8)
+#             elif i == 'w' or i == 'x' or i == 'y' or i == 'z':
+#                 ls.append(9)
+#         else:
+#             ls.append(i)
+#     return ls
+# stri = input()
+# check(stri)
+# for k in ls:
+#     print(k,end = '')
+
+
+# def zhengchu(a):
+#     k,s = 0,0
+#     ls1 = []
+#     ls2 = []    
+#     while a:
+#         if a>=3:
+#             ls1.append(a//3)
+#             ls2.append(a%3)
+#         else:
+#             ls2.append(a)
+#         a = a//3
+#     for i in ls1:
+#         k = k + i
+#     for i in ls2:
+#         s = s + i
+#     return k,s
+
+# def quzhi(a,b):
+#     if b<2:
+#         return a
+#     elif b == 2 or b == 3:
+#         return a + 1
+#     else:
+#         p,q = zhengchu(b)
+#         if q < 2:
+#             return a + p
+#         elif q == 2 or q == 3:
+#             return a + p + 1
+#         else:
+#             while q>3:
+#                 return a + p + quzhi(p,q)
+
+# n = 10
+# while n:
+#     a = int(input())
+#     if a == 0:
+#         break
+#     else:
+#         f,g = zhengchu(a)
+#     n -=1
+#     print(quzhi(f,g))
+
+
+# def strc(stn):
+#     sl = {}
+#     m = 0
+#     for i in stn[:]:
+#         if i.islower():
+#             continue
+#         else:
+#             break
+#     while m < len(stn):
+#         i = stn[m]
+#         sl[i] = 1
+#         for k in stn[0:m] + stn[m+1:]:
+#             if i == k:
+#                 sl[i] +=1
+#         m +=1
+#     nummin = min(sl.values())
+#     a = ''
+#     for i in stn[:]:
+#         if sl[i] == nummin:
+#             a = ''
+#         else:
+#             print(a+i,end = '')
+# n = 2
+# while n:
+#     stn = input()
+#     if len(stn) > 20:
+#         print('重新输入:')
+#         stn = input()
+#         strc(stn)
+#     else:
+#         strc(stn)
+#         print('\r')
+#     n -=1
+
+# 计算最少出列多少位同学，使得剩下的同学排成合唱队形
+
+# 说明：
+
+# N 位同学站成一排，音乐老师要请其中的 (N - K) 位同学出列，使得剩下的 K 位同学排成合唱队形。
+# 合唱队形是指这样的一种队形：设K位同学从左到右依次编号为 1，2…，K ，他们的身高分别为 T1，T2，…，TK ,
+# 则他们的身高满足存在 i （1<=i<=K） 使得 T1<T2<......<Ti-1<Ti>Ti+1>......>TK 。
+
+
+
+# def check(lst):
+#     dp = []
+#     for i in range(len(lst)):
+#         dp.append(1)
+#         for k in range(i):
+#             if lst[i] > lst[k]:
+#                 dp[i] = max(dp[i],dp[k]+1)
+#     return dp
+
+# while True:
+#     try:
+#         N, ln = int(input()), list(map(int,input().split(' ')))
+#         res = []
+#         dp1, dp2 = check(ln), check(ln[::-1])[::-1]
+#         for i in range(len(dp1)):
+#             res.append(dp1[i] + dp2[i] -1)
+#         print(N - max(res))
+#     except:
+#         break
+
+
+
+# n = 2
+# while n:
+#     try:
+#         ln = list(map(int,input().split(' ')))
+#         ls = list(map(int,input().split(' ')))
+#         lx = sorted(list(set(ls[1:])))
+#         dp = {}
+#         for i in range(len(lx)):
+#             lm = []
+#             for k in range(len(ln[1:])):
+#                 if str(lx[i]) in str(ln[1:][k])[:]:
+#                     lm.append(k)
+#                     lm.append(ln[1:][k])
+#                 else:
+#                     continue
+#                 dp[lx[i]] = lm
+#         resy = []
+#         for i in dp:
+#             l = len(dp[i])//2
+#             resy.append(i)
+#             resy.append(l)
+#             for k in dp[i]:
+#                 resy.append(k)
+#         print(len(resy),end = ' ')
+#         for i in resy:
+#             print(i,end = ' ')
+#         print('\r')
+#     except:
+#         break
+
+
+# stn = input().split(' ')
+# ls = []
+# for item in stn:
+#     l = len(item[:])
+#     for f in item[:]:
+#         ls.append(f)
+# print(ls)
+# for i in range(len(ls)):
+#     for k in range(i):
+#         if ls[i].isalpha() and ls[k].isalpha():
+#             if ord(ls[i]) < ord(ls[k]):
+#                 if ls[i].lower() != ls[k]:
+#                     ls[i],ls[k] = ls[k],ls[i]
+#                 else:
+#                     continue
+#             else:
+#                 continue
+#         else:
+#             continue
+# print(stn)
+# print(ls)
+
+# key = input()
+# stn = input().split(' ')
+# ls,ln = [],[]
+# for i in key[:]:
+#     ls.append(i)
+# for i in range(len(ls)):
+#     ls[i] = ls[i].lower()
+#     if ls[i] not in ls[:i]:
+#         ln.append(ls[i])
+# standlst = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
+# for x in standlst:
+#     if x not in ln:
+#         ln.append(x)
+# for item in stn:
+#     for i in item[:]:
+#         if i.islower():
+#             i = ln[standlst.index(i)]
+#         elif i.isupper():
+#             i = ln[standlst.index(i)].upper()
+#         print(i,end = '')
+#     print('\r')
+
+# m = 6
+# while m:
+#     n = int(input())
+#     def sumn(a):
+#         if a == 1:
+#             return 1
+#         elif a == 2:
+#             return 1
+#         else:
+#             while a:
+#                 return sumn(a-1) + sumn(a-2)
+#     print(sumn(n))
+#     m -=1
+
+# stn = input().split()
+# ln = []
+# for item in stn:
+#     for k in item[:]:
+#         ln.append(k)
+# print(ln)
+# for i in range(len(ln)):
+#     for k in range(i):
+#         if ln[i].isalpha() and ln[k].isalpha():
+#             if ord(ln[i].lower()) < ord(ln[k].lower()):
+#                 ln[i],ln[k] = ln[k],ln[i]
+#             else:
+#                 continue
+#         else:
+#             continue
+# print(ln)
+
+# n = 5
+# while n:
+#     try:
+#         stn = input()
+#         a,b,c,d = 0,0,0,0
+#         for i in stn[:]:
+#             if i.isalpha():
+#                 a +=1
+#             elif i.isspace():
+#                 b +=1
+#             elif i.isdigit():
+#                 c +=1
+#             else:
+#                 d +=1
+#         print(a,b,c,d)
+#     except:
+#         break
+
+# while True:
+#     try:
+#         m, n = list(map(int, input().split()))
+#         maze = []
+#         for _  in range(m):
+#             maze.append(list(map(int, input().split())))
+            
+#         def walk(i, k, pos=[(0, 0)]):
+#             if k+1 < n and maze[i][k+1] == 0: 
+#                 if (i, k+1) not in pos:
+#                     walk(i, k+1, pos + [(i, k+1)])
+#             if k-1 >= 0 and maze[i][k-1] == 0: 
+#                 if (i, k-1) not in pos:
+#                     walk(i, k-1, pos + [(i, k-1)])
+#             if i+1 < m and maze[i+1][k] == 0: 
+#                 if (i+1, k) not in pos:
+#                     walk(i+1, k, pos + [(i+1, k)])
+#             if i-1 >= 0 and maze[i-1][k] == 0: 
+#                 if (i-1, k) not in pos:
+#                     walk(i-1, k, pos + [(i-1, k)])
+#             if (i, k) == (m-1, n-1): 
+#                 for p in pos:
+#                     print('(' + str(p[0]) + ',' + str(p[1]) + ')')
+                    
+#         walk(0, 0)
+#     except:
+#         break
+
+
+# ly = [1,2,3,4,5,6,7,8,9]
+# dictn = {1:[1,2,3],2:[4,5,6],3:[7,8,9]}
+# maz = []
+# for i in range(9):
+#     maz.append(list(map(int,input().split())))
+# def getx(lx):
+#     le = list(set(ly) - set(lx))
+#     return le
+# def classfy(x):
+#     if (x+1)%3 == 0:
+#         return (x+1)//3
+#     else:
+#         return (x+1)//3+1
+# def gety(maz):
+#     for i in range(9):
+#         for k in range(9):
+#             if maz[i][k] == 0:
+#                 ln1 = getx(maz[i])
+#                 lnx = []
+#                 for x in range(9):
+#                     lnx.append(maz[x][k])
+#                 ln2 = getx(lnx)
+#                 a = classfy(i)
+#                 b = classfy(k)
+#                 lny = []
+#                 for m in dictn[a]:
+#                     for n in dictn[b]:
+#                         lny.append(maz[m-1][n-1])
+#                 ln3 = getx(lny)
+#                 lnt = list(set(ln1) & set(ln2) & set(ln3))
+#                 if len(lnt) == 1:
+#                     maz[i][k] = lnt[0]
+#     return maz
+# while True:
+#     gety(maz)
+#     listb = []
+#     for i in range(9):
+#         for k in range(9):
+#             listb.append(maz[i][k])
+#     if 0 not in listb:
+#         break
+#     else:
+#         continue
+# for i in range(9):
+#     for k in range(9):
+#         print(maz[i][k],end = ' ')
+#     print('\r')
+
+
+# class solution:
+
+#     def isvalue(self,dot,x,y):
+#         for i in range(9):
+#             if i != x and dot[i][y] == dot[x][y]:
+#                 return False
+#         for k in range(9):
+#             if k != y and dot[x][k] == dot[x][y]:
+#                 return False
+#         lz = {0:[0,1,2],1:[3,4,5],2:[6,7,8]}
+#         for f in lz[x//3]:
+#             for g in lz[y//3]:
+#                 if (f != x or g != y) and dot[f][g] == dot[x][y]:
+#                     return False
+#         return True
+
+#     def addnum(self,dot):
+#         for i in range(9):
+#             for k in range(9):
+#                 if dot[i][k] == 0:
+#                     for r in '123456789':
+#                         dot[i][k] = int(r)
+#                         if self.isvalue(dot,i,k) and self.addnum(dot):
+#                             return True
+#                         dot[i][k] = 0
+#                     else:
+#                         return False
+#         return True
+
+# dot = []
+# for i in range(9):
+#     dot.append(list(map(int,input().split())))
+# s = solution()
+# s.addnum(dot)
+
+# for i in range(9):
+#     for k in range(9):
+#         print(dot[i][k],end = ' ')
+#     print('\r')
+
+# while True:
+#     try:
+#         print(eval(input()))
+#     except:
+#         break
+
+# while True:
+#     try:
+#         n = int(input())
+#         listn = []
+#         for i in range(1,n+1):
+#             if i%7 == 0:
+#                 listn.append(i)
+#             for k in str(i)[:]:
+#                 if int(k) == 7 and i%7 != 0:
+#                     listn.append(i)
+#             else:
+#                 pass
+#         print(len(set(listn)))
+#     except:
+#         break
+
+# n = int(input())
+# lt = []
+# for i in range(1,n+1):
+#     lst = []
+#     a = 0
+#     k = i//2
+#     while k:
+#         if i%k == 0:
+#             lst.append(k)
+#         k -=1
+#     for f in lst:
+#         a = a + f
+#     if a == i:
+#         lt.append(i)
+# print(len(lt))
+
+# st1 = input()
+# st2 = input()
+# print(int(st1) + int(st2))
+
+# l1 = list(map(int,input().split()))
+# l2 = list(map(int,input().split()))
+# l2.sort()
+# n = l1[1]
+# ls = []
+# for i in range(n):
+#     ls.append(l2[i])
+# print(' '.join(map(str,ls)))
+
+# while True:
+#     try:
+#         stn = input()
+#         ls = []
+#         for i in stn[:]:
+#             if stn[:].count(i) == 1:
+#                 ls.append(i)
+#         if len(ls) >0:
+#             print(ls[0])
+#         else:
+#             print('-1')
+#     except:
+#         break
+
+# class Prime:
+
+#     def prime(self,num):
+#         ls = []
+#         for i in range(2,num//2):
+#             if num%i == 0:
+#                 ls.append(i)
+#         if len(ls) == 0:
+#             return True
+#         else:
+#             return False
+# p = Prime()
+# n = int(input())
+# ln = []
+# for i in range(1,n//2+1):
+#     for k in range(n//2,n):
+#         if i + k == n and p.prime(i) and p.prime(k):
+#             ln.append((i,k))
+# sn = ln[len(ln)-1]
+# for i in sn:
+#     print(i,end = '\n')
+
+# stn = list(input())
+# print(''.join(stn[::-1]))
