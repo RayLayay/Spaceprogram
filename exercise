@@ -1,28 +1,3 @@
-# l1 = []
-# n = int(input(''))
-# def suiji(n):
-#     i = 1
-#     while i <= n:
-#         a = random.randint(1,1001)
-#         l1.append(a)
-#         i +=1
-#     return l1
-# suiji(n)
-# s1 = set()
-# for i in l1:
-#     s1.add(i)
-# l2 = []
-# for i in s1:
-#     l2.append(int(i))
-# for i in range(0,len(l2)):
-#     for k in range(0,i):
-#         if l2[i] < l2[k]:
-#             l2[i],l2[k] = l2[k],l2[i]
-# for i in l2:
-#     print(i)
-
-
-
 # b = ""
 # n = 10
 # while n:
